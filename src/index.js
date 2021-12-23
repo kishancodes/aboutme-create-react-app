@@ -1,17 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import AboutMe from './containers/AboutMe'
+import Hobbies from './containers/Hobbies'
+import { BrowserRouter, Route } from 'react-router-dom'
+import NavBar from './components/NavBar'
+import Paper from '@material-ui/core/Paper'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+'/AboutMe'.startsWith('/')
+'/AboutMe'.startsWith('/AboutMe')
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const AppContainer = () => {
+    return (
+        <BrowserRouter >
+            <Paper style={{background: 'black', padding: 5, marginBottom: 10}} >
+                <NavBar />
+            </Paper>
+            <Paper style={{background: 'grey', padding: 5, marginBottom: 10}} >
+                <Route component={AboutMe} exact={true} path='/'/>
+                <Route component={Hobbies} path='/Hobbies'/>
+            </Paper>
+        </BrowserRouter>
+    )
+}
+ReactDOM.render(<AppContainer />, document.querySelector('#root'))
